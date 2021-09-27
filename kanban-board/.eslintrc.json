@@ -1,7 +1,7 @@
 {
     "settings": {
-        "import/resolver":{
-            "typescript":{}
+        "import/resolver": {
+            "typescript": {}
         }
     },
     "env": {
@@ -10,8 +10,9 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "airbnb"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -24,20 +25,36 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "react-hooks"
+        "react-hooks",
+        "prettier"
     ],
     "rules": {
-        "no-use-before-define":"off",
+        "no-use-before-define": "off",
         "max-len": ["warn", { "code": 160 }],
         "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
-        "import/extensions": ["error", "ignorePackages", { "ts": "never", "tsx": "never" }],
-        "react-hooks/rules-of-hooks":"error",
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "ts": "never",
+                "tsx": "never"
+            }
+        ],
+        "prettier/prettier": "error",
+        "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "@typescript-eslint/no-use-before-define": ["error"],
         "import/prefer-default-export": "off",
-        "no-multiple-empty-lines": ["error", { "max": 1,"maxBOF": 0, "maxEOF": 0 }],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxBOF": 0,
+                "maxEOF": 0
+            }
+        ],
         "react/jsx-props-no-spreading": "off",
         "react/prop-types": "off",
         "jsx-a11y/anchor-is-valid": "off",
@@ -47,6 +64,10 @@
         "camelcase": "off",
         "lines-between-class-members": "off",
         "@typescript-eslint/no-unused-vars": "error",
-        "react/require-default-props": "off"
+        "react/require-default-props": "off",
+        "semi": "off",
+        "@typescript-eslint/semi": [
+            "error"
+        ]
     }
 }
