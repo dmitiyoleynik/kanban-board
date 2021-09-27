@@ -10,7 +10,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "plugin:@typescript-eslint/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -22,7 +23,8 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-hooks"
     ],
     "rules": {
         "no-use-before-define":"off",
@@ -45,6 +47,6 @@
         "camelcase": "off",
         "lines-between-class-members": "off",
         "@typescript-eslint/no-unused-vars": "error",
-        "react/require-default-props": "off",
+        "react/require-default-props": "off"
     }
 }
