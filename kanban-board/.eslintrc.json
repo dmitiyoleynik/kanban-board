@@ -11,8 +11,10 @@
     "extends": [
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
-        "prettier",
-        "airbnb"
+        "plugin:testing-library/react",
+        "plugin:jest-dom/recommended",
+        "airbnb",
+        "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
