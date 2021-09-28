@@ -1,17 +1,14 @@
 import { RootActions } from '../actions';
 
 interface IBoardState {
-    columns: string[];
+  columns: string[];
 }
 
 const initialState: IBoardState = {
   columns: ['To do', 'Doing', 'Done'],
 };
 
-export default function board(
-  state = initialState,
-  action: RootActions,
-): IBoardState {
+export default function board(state = initialState, action: RootActions): IBoardState {
   switch (action) {
     default:
       return state;

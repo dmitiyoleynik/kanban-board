@@ -5,6 +5,7 @@
         }
     },
     "env": {
+        "jest": true,
         "browser": true,
         "es2021": true
     },
@@ -14,7 +15,8 @@
         "plugin:testing-library/react",
         "plugin:jest-dom/recommended",
         "airbnb",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
