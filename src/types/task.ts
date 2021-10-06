@@ -1,4 +1,4 @@
-import { taskTypes } from '../constants';
+import { taskTypes } from 'utils/constants';
 
 type taskType = typeof taskTypes[number];
 

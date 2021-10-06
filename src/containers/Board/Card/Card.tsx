@@ -7,9 +7,9 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 import { ICard } from 'types/card';
 import { taskType } from 'types/task';
+import { taskTypes } from 'utils/constants';
 
 import useCardStyles from './card.styles';
-import { taskTypes } from '../../../constants';
 
 const Card: FC<ICard> = ({ pictureType, id, description, initialState }) => {
   const style = useCardStyles();

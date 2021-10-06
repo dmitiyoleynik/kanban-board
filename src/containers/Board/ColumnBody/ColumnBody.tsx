@@ -5,7 +5,7 @@ import { taskType } from 'types/task';
 
 import Card from '../Card/Card';
 
-import useBodyStyles from './body.styles';
+import useColumnBodyStyles from './columnBody.styles';
 
 interface IBody {
   cards: ICard[];
@@ -17,8 +17,8 @@ const onDragOver = (e: DragEvent<HTMLDivElement>) => {
   e.preventDefault();
 };
 
-const Body: FC<IBody> = ({ cards, type, dropHandler }) => {
-  const styles = useBodyStyles();
+const ColumnBody: FC<IBody> = ({ cards, type, dropHandler }) => {
+  const styles = useColumnBodyStyles();
 
   const onDrop = useCallback(
     (e: DragEvent<HTMLDivElement>) => {
@@ -39,4 +39,4 @@ const Body: FC<IBody> = ({ cards, type, dropHandler }) => {
   );
 };
 
-export default Body;
+export default ColumnBody;
