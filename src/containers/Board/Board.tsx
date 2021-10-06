@@ -1,35 +1,40 @@
-import React, { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 
 import Header from 'containers/Board/Header';
 
 import type { taskType } from 'types/task';
+import { ICard } from 'types/card';
+
 import { taskTypes } from '../../constants';
 import useBoardStyles from './board.styles';
 import Body from './Body';
 
-interface ICard {
-  type: 'task' | 'bug';
-  id: number;
-  description: string;
-  initialState: taskType;
-}
-
 const cardsMocked: ICard[] = [
   {
-    type: 'task',
+    pictureType: 'task',
     id: 1,
     description: 'task1',
     initialState: 'To do',
+  },
+  {
+    pictureType: 'task',
+    id: 2,
+    description: 'task2',
+    initialState: 'Done',
   },
 ];
 
 const Board: FC = () => {
   const style = useBoardStyles();
+
   const [cards, setCards] = useState(cardsMocked);
-  const [draddingId, setDradding] = useState<number | null>(null);
-  const onDrop = (newState: taskType, cardId: number) => {
-    setCards(cards.map(card => (cardId === card.id ? { ...card, initialState: newState } : card)));
-  };
+
+  const onDrop = useCallback(
+    (newState: taskType, cardId: number) => {
+      setCards(cards.map(card => (cardId === card.id ? { ...card, initialState: newState } : card)));
+    },
+    [setCards, cards],
+  );
 
   return (
     <div className={style.board}>

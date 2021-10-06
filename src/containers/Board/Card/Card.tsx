@@ -1,41 +1,41 @@
+import { FC, useState } from 'react';
+
 import BugReportIcon from '@mui/icons-material/BugReport';
 import TaskIcon from '@mui/icons-material/Task';
 import { FormControl, InputLabel, MenuItem } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { FC, useState } from 'react';
+
+import { ICard } from 'types/card';
 import { taskType } from 'types/task';
+
 import useCardStyles from './card.styles';
+import { taskTypes } from '../../../constants';
 
-export interface ICard {
-  type: 'task' | 'bug';
-  id: number;
-  description: string;
-  initialState: taskType;
-}
-
-const Card: FC<ICard> = ({ type, id, description, initialState }) => {
+const Card: FC<ICard> = ({ pictureType, id, description, initialState }) => {
   const style = useCardStyles();
   const [state, setState] = useState<taskType>(initialState);
 
   const handleChange = (event: SelectChangeEvent<taskType>) => {
     setState(event.target.value as taskType);
   };
+
   const dragStartHandler = (e: any) => {
     e.dataTransfer.setData('text/plain', id.toString());
   };
+
   return (
     <div className={style.card} draggable key={id} onDragStart={dragStartHandler}>
       <div>
-        {type === 'task' ? <TaskIcon /> : <BugReportIcon />}
+        {pictureType === 'task' ? <TaskIcon /> : <BugReportIcon />}
         {id}
         {description}
       </div>
       <FormControl className={style.state}>
         <InputLabel id="demo-simple-select-standard-label">State</InputLabel>
         <Select value={state} label="State" onChange={handleChange}>
-          <MenuItem value="Todo">Todo</MenuItem>
-          <MenuItem value="InProgress">InProgress</MenuItem>
-          <MenuItem value="Done">Done</MenuItem>
+          {taskTypes.map(type => (
+            <MenuItem value={type}>{type}</MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>
