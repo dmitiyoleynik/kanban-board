@@ -1,8 +1,10 @@
 import { makeStyles } from '@mui/styles';
+import { grey } from 'theme/colors';
 
 const useAppStyles = makeStyles(() => ({
   app: {
-    // backgroundColor: grey,
+    backgroundColor: grey,
+    height: '100%',
   },
 }));
 

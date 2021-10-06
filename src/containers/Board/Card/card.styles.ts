@@ -1,5 +1,6 @@
+import { grey } from 'theme/colors';
+
 import { makeStyles } from '@mui/styles';
-import { grey } from '../../../theme/colors';
 
 const useCardStyles = makeStyles(() => ({
   card: {
@@ -9,7 +10,7 @@ const useCardStyles = makeStyles(() => ({
     flexDirection: 'column',
   },
   state: {
-    display: 'flex',
+    padding: '2rem',
   },
 }));
 

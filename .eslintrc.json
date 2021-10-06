@@ -67,7 +67,7 @@
         "no-unused-vars": "off",
         "camelcase": "off",
         "lines-between-class-members": "off",
-        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-unused-vars": "warn",
         "react/require-default-props": "off",
         "semi": "off",
         "@typescript-eslint/semi": [

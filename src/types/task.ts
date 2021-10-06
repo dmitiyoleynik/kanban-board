@@ -1,5 +1,5 @@
-export enum State {
-  Todo = 'To do',
-  InProgress = 'In progress',
-  Done = 'Done',
-}
+import { taskTypes } from '../constants';
+
+type taskType = typeof taskTypes[number];
+
+export type { taskType };
