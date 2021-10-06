@@ -13,7 +13,7 @@ interface IBody {
   dropHandler: (newState: taskType, cardId: number) => void;
 }
 
-const onDragOver = (e: any) => {
+const onDragOver = (e: DragEvent<HTMLDivElement>) => {
   e.preventDefault();
 };
 
@@ -33,7 +33,7 @@ const Body: FC<IBody> = ({ cards, type, dropHandler }) => {
   return (
     <div className={styles.body} onDrop={onDrop} onDragOver={onDragOver}>
       {cards.map(card => (
-        <Card {...card} />
+        <Card {...card} key={card.id} />
       ))}
     </div>
   );

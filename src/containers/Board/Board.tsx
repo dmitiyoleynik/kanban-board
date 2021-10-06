@@ -35,17 +35,16 @@ const Board: FC = () => {
     },
     [setCards, cards],
   );
-
   return (
     <div className={style.board}>
       <div className={style.board_header}>
         {taskTypes.map(name => (
-          <Header name={name} />
+          <Header name={name} key={name} />
         ))}
       </div>
       <div className={style.board_body}>
         {taskTypes.map(type => (
-          <Body type={type} dropHandler={onDrop} cards={cards.filter(card => card.initialState === type)} />
+          <Body type={type} dropHandler={onDrop} cards={cards.filter(card => card.initialState === type)} key={type} />
         ))}
       </div>
     </div>

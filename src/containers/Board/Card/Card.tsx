@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useState, DragEvent, useCallback } from 'react';
 
 import BugReportIcon from '@mui/icons-material/BugReport';
 import TaskIcon from '@mui/icons-material/Task';
@@ -19,12 +19,15 @@ const Card: FC<ICard> = ({ pictureType, id, description, initialState }) => {
     setState(event.target.value as taskType);
   };
 
-  const dragStartHandler = (e: any) => {
-    e.dataTransfer.setData('text/plain', id.toString());
-  };
+  const dragStartHandler = useCallback(
+    (e: DragEvent<HTMLDivElement>) => {
+      e.dataTransfer.setData('text/plain', id.toString());
+    },
+    [id],
+  );
 
   return (
-    <div className={style.card} draggable key={id} onDragStart={dragStartHandler}>
+    <div className={style.card} draggable onDragStart={dragStartHandler}>
       <div>
         {pictureType === 'task' ? <TaskIcon /> : <BugReportIcon />}
         {id}
@@ -34,7 +37,9 @@ const Card: FC<ICard> = ({ pictureType, id, description, initialState }) => {
         <InputLabel id="demo-simple-select-standard-label">State</InputLabel>
         <Select value={state} label="State" onChange={handleChange}>
           {taskTypes.map(type => (
-            <MenuItem value={type}>{type}</MenuItem>
+            <MenuItem key={type} value={type}>
+              {type}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>
