@@ -16,7 +16,9 @@ const onDragOver = (e: any) => {
 const Body: FC<IBody> = ({ cards, type, dropHandler }) => {
   const onDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    dropHandler(type, 1);
+
+    const id = parseInt(e.dataTransfer.getData('text/plain'), 10);
+    dropHandler(type, id);
   };
 
   const styles = useBodyStyles();

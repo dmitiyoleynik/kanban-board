@@ -46,7 +46,7 @@
                 "tsx": "never"
             }
         ],
-        "prettier/prettier": "error",
+        "prettier/prettier": "warn",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "@typescript-eslint/no-use-before-define": ["error"],

@@ -20,9 +20,11 @@ const Card: FC<ICard> = ({ type, id, description, initialState }) => {
   const handleChange = (event: SelectChangeEvent<taskType>) => {
     setState(event.target.value as taskType);
   };
-
+  const dragStartHandler = (e: any) => {
+    e.dataTransfer.setData('text/plain', id.toString());
+  };
   return (
-    <div className={style.card} draggable>
+    <div className={style.card} draggable key={id} onDragStart={dragStartHandler}>
       <div>
         {type === 'task' ? <TaskIcon /> : <BugReportIcon />}
         {id}

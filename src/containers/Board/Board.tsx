@@ -26,6 +26,7 @@ const cardsMocked: ICard[] = [
 const Board: FC = () => {
   const style = useBoardStyles();
   const [cards, setCards] = useState(cardsMocked);
+  const [draddingId, setDradding] = useState<number | null>(null);
   const onDrop = (newState: taskType, cardId: number) => {
     setCards(cards.map(card => (cardId === card.id ? { ...card, initialState: newState } : card)));
   };
