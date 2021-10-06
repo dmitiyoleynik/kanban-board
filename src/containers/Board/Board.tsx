@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 import Header from 'containers/Board/Header';
 
@@ -14,7 +14,7 @@ interface ICard {
   initialState: taskType;
 }
 
-const cards: ICard[] = [
+const cardsMocked: ICard[] = [
   {
     type: 'task',
     id: 1,
@@ -25,8 +25,9 @@ const cards: ICard[] = [
 
 const Board: FC = () => {
   const style = useBoardStyles();
-  const onDrop: React.DragEventHandler<HTMLDivElement> = () => {
-    console.log('Dropped');
+  const [cards, setCards] = useState(cardsMocked);
+  const onDrop = (newState: taskType, cardId: number) => {
+    setCards(cards.map(card => (cardId === card.id ? { ...card, initialState: newState } : card)));
   };
 
   return (
@@ -38,7 +39,7 @@ const Board: FC = () => {
       </div>
       <div className={style.board_body}>
         {taskTypes.map(type => (
-          <Body type={type} onDrop={onDrop} cards={cards.filter(card => card.initialState === type)} />
+          <Body type={type} dropHandler={onDrop} cards={cards.filter(card => card.initialState === type)} />
         ))}
       </div>
     </div>
