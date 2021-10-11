@@ -1,13 +1,8 @@
-import { grey } from 'theme/colors';
-
 import { makeStyles } from '@mui/styles';
 
-const useCardStyles = makeStyles(() => ({
+const useCardStyles = makeStyles(theme => ({
   card: {
-    backgroundColor: grey,
-    maxWidth: '10rem',
-    display: 'flex',
-    flexDirection: 'column',
+    maxWidth: theme.spacing(10),
   },
   state: {
     padding: '2rem',
