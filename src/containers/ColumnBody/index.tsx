@@ -3,14 +3,14 @@ import { FC, DragEvent, useCallback } from 'react';
 import Card from 'components/Card';
 
 import { ICard } from 'types/card';
-import { taskType } from 'types/task';
+import { TaskType } from 'types/task';
 
 import useColumnBodyStyles from './columnBody.styles';
 
 interface IBody {
   cards: ICard[];
-  type: taskType;
-  dropHandler: (newState: taskType, cardId: number) => void;
+  type: TaskType;
+  dropHandler: (newState: TaskType, cardId: number) => void;
 }
 
 const onDragOver = (e: DragEvent<HTMLDivElement>) => {

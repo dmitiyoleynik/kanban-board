@@ -1,5 +1,5 @@
 import { taskTypes } from 'utils/constants';
 
-type taskType = typeof taskTypes[number];
+type TaskType = typeof taskTypes[number];
 
-export type { taskType };
+export type { TaskType };

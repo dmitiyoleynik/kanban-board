@@ -1,25 +1,20 @@
-import React, { FC, useState, DragEvent, useCallback, useMemo } from 'react';
+import { FC, DragEvent, useCallback, useMemo } from 'react';
 
 import MuiCard from '@mui/material/Card';
 import TaskIcon from '@mui/icons-material/Task';
-import { Avatar, CardContent, Stack, Box, Typography, dividerClasses } from '@mui/material';
-import { SelectChangeEvent } from '@mui/material/Select';
-
-import { ICard } from 'types/card';
-import { taskType } from 'types/task';
+import { Avatar, CardContent, Stack, Typography } from '@mui/material';
 
 import Tag from 'components/Tag';
+
+import { ICard } from 'types/card';
+
 import { randomColor } from 'services/random';
 import useCardStyles from './card.styles';
 
-const Card: FC<ICard> = ({ id, initialState, title, tags, assignedTo }) => {
+const Card: FC<ICard> = ({ id, title, tags, assignedTo }) => {
   const avatarColor = useMemo(() => randomColor(), []);
   const style = useCardStyles();
-  const [state, setState] = useState<taskType>(initialState);
 
-  const handleChange = (event: SelectChangeEvent<taskType>) => {
-    setState(event.target.value as taskType);
-  };
   const dragStartHandler = useCallback(
     (e: DragEvent<HTMLDivElement>) => {
       e.dataTransfer.setData('text/plain', id.toString());

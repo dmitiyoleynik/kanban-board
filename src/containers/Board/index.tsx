@@ -2,7 +2,7 @@ import { FC, useCallback, useState } from 'react';
 
 import ColumnHeader from 'containers/ColumnHeader';
 
-import type { taskType } from 'types/task';
+import type { TaskType } from 'types/task';
 import { ICard } from 'types/card';
 
 import { taskTypes } from 'utils/constants';
@@ -32,7 +32,7 @@ const Board: FC = () => {
   const [cards, setCards] = useState(cardsMocked);
 
   const onDrop = useCallback(
-    (newState: taskType, cardId: number) => {
+    (newState: TaskType, cardId: number) => {
       setCards(cards.map(card => (cardId === card.id ? { ...card, initialState: newState } : card)));
     },
     [setCards, cards],
