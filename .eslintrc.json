@@ -33,6 +33,10 @@
         "prettier"
     ],
     "rules": {
+        "arrow-body-style": [
+            "error",
+            "as-needed"
+        ],
         "no-use-before-define": "off",
         "max-len": ["warn", { "code": 160 }],
         "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
