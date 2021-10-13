@@ -1,9 +1,8 @@
 import { FC } from 'react';
 
-import Board from 'containers/Board/Board';
+import Board from 'containers/Board';
 
 import useGlobalStyles from 'index.styles';
-
 import useAppStyles from './app.styles';
 
 const App: FC = () => {

@@ -1,8 +1,9 @@
 import { taskType } from './task';
 
 export interface ICard {
-  pictureType: 'task' | 'bug';
   id: number;
-  description: string;
+  title: string;
+  assignedTo: string;
+  tags?: string[];
   initialState: taskType;
 }

@@ -1,26 +1,28 @@
 import { FC, useCallback, useState } from 'react';
 
-import ColumnHeader from 'containers/Board/ColumnHeader';
+import ColumnHeader from 'containers/ColumnHeader';
 
 import type { taskType } from 'types/task';
 import { ICard } from 'types/card';
 
 import { taskTypes } from 'utils/constants';
 import useBoardStyles from './board.styles';
-import ColumnBody from './ColumnBody';
+import ColumnBody from '../ColumnBody';
 
 const cardsMocked: ICard[] = [
   {
-    pictureType: 'task',
     id: 1,
-    description: 'task1',
+    title: 'Todo task',
     initialState: 'To do',
+    assignedTo: 'Dmytro Oliinyk',
+    tags: ['bug', 'fixit'],
   },
   {
-    pictureType: 'task',
     id: 2,
-    description: 'task2',
+    title: 'Done task',
     initialState: 'Done',
+    assignedTo: 'Dmytro Oliinyk',
+    tags: ['andry chirt'],
   },
 ];
 

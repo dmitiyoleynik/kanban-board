@@ -1,10 +1,8 @@
+import Card from 'components/Card';
 import { FC, DragEvent, useCallback } from 'react';
 
 import { ICard } from 'types/card';
 import { taskType } from 'types/task';
-
-import Card from '../Card/Card';
-
 import useColumnBodyStyles from './columnBody.styles';
 
 interface IBody {
