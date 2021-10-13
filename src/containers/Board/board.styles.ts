@@ -1,16 +1,18 @@
 import { makeStyles } from '@mui/styles';
 
+import { white } from 'theme/colors';
+
 const useBoardStyles = makeStyles(() => ({
   board: {
     padding: '1rem',
   },
   board_header: {
     display: 'flex',
-    backgroundColor: '#fff',
+    backgroundColor: white,
   },
   board_body: {
     display: 'flex',
-    backgroundColor: '#fff',
+    backgroundColor: white,
   },
   header_element: {
     flex: 1,
