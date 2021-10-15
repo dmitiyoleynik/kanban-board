@@ -1,18 +1,24 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
+
+import { ThemeProvider } from '@mui/styles';
 
 import Board from 'containers/Board';
 
-import useGlobalStyles from 'index.styles';
+import theme from 'theme';
+
 import useAppStyles from './app.styles';
 
 const App: FC = () => {
   const style = useAppStyles();
-  useGlobalStyles();
 
   return (
-    <main className={style.app}>
-      <Board />
-    </main>
+    <React.StrictMode>
+      <ThemeProvider theme={theme}>
+        <main className={style.app}>
+          <Board />
+        </main>
+      </ThemeProvider>
+    </React.StrictMode>
   );
 };
 

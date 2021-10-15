@@ -3,6 +3,7 @@ import { FC, useMemo } from 'react';
 import { Box, Typography } from '@mui/material';
 
 import { randomColor } from 'services/random';
+
 import useTagStyles from './tag.styles';
 
 interface ITagProps {

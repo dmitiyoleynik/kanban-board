@@ -5,7 +5,8 @@ import Card from 'components/Card';
 import { ICard } from 'types/card';
 import { TaskType } from 'types/task';
 
-import useColumnBodyStyles from './columnBody.styles';
+import { Paper, Stack, Typography } from '@mui/material';
+import useBoardColumnStyles from './columnBody.styles';
 
 interface IBody {
   cards: ICard[];
@@ -17,8 +18,8 @@ const onDragOver = (e: DragEvent<HTMLDivElement>) => {
   e.preventDefault();
 };
 
-const ColumnBody: FC<IBody> = ({ cards, type, dropHandler }) => {
-  const styles = useColumnBodyStyles();
+const BoardColumn: FC<IBody> = ({ cards, type, dropHandler }) => {
+  const styles = useBoardColumnStyles();
 
   const onDrop = useCallback(
     (e: DragEvent<HTMLDivElement>) => {
@@ -31,12 +32,15 @@ const ColumnBody: FC<IBody> = ({ cards, type, dropHandler }) => {
   );
 
   return (
-    <div className={styles.body} onDrop={onDrop} onDragOver={onDragOver}>
-      {cards.map(card => (
-        <Card {...card} key={card.id} />
-      ))}
-    </div>
+    <Paper className={styles.body} onDragOver={onDragOver} onDrop={onDrop}>
+      <Typography>{type}</Typography>
+      <Stack>
+        {cards.map(card => (
+          <Card {...card} key={card.id} />
+        ))}
+      </Stack>
+    </Paper>
   );
 };
 
-export default ColumnBody;
+export default BoardColumn;

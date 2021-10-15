@@ -1,4 +1,4 @@
-import { RootActions } from '../actions';
+import { RootActions } from 'store/actions';
 
 interface IBoardState {
   columns: string[];

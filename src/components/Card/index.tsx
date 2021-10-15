@@ -7,31 +7,26 @@ import { Avatar, CardContent, Stack, Typography } from '@mui/material';
 import Tag from 'components/Tag';
 
 import { ICard } from 'types/card';
-
 import { randomColor } from 'services/random';
+
 import useCardStyles from './card.styles';
 
 const Card: FC<ICard> = ({ id, title, tags, assignedTo }) => {
+  const dragStartHandler = useCallback((e: DragEvent<HTMLDivElement>) => e.dataTransfer.setData('text/plain', id.toString()), [id]);
+  const avatarLetter = useMemo(() => assignedTo.slice(0, 1), [assignedTo]);
   const avatarColor = useMemo(() => randomColor(), []);
   const style = useCardStyles();
-
-  const dragStartHandler = useCallback(
-    (e: DragEvent<HTMLDivElement>) => {
-      e.dataTransfer.setData('text/plain', id.toString());
-    },
-    [id],
-  );
 
   return (
     <MuiCard raised className={style.card} draggable onDragStart={dragStartHandler}>
       <CardContent>
-        <Stack justifyContent="space-between" direction="column" alignItems="flex-start" spacing={2}>
+        <Stack className={style.cardInfo} spacing={2}>
           <Stack direction="row" spacing={2}>
             <TaskIcon />
             <Typography>{title}</Typography>
           </Stack>
-          <Stack direction="row" spacing={2} alignItems="center">
-            <Avatar sx={{ bgcolor: avatarColor }}>{assignedTo.slice(0, 1)}</Avatar>
+          <Stack direction="row" spacing={2} className={style.assignedTo}>
+            <Avatar sx={{ bgcolor: avatarColor }}>{avatarLetter}</Avatar>
             <Typography>{assignedTo}</Typography>
           </Stack>
           {tags && (
