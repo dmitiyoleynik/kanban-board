@@ -1,13 +1,14 @@
 import { FC, useCallback, useState } from 'react';
 
-import BoardColumn from 'containers/ColumnBody';
+import { Stack } from '@mui/material';
+
+import BoardColumn from 'containers/BoardColumn';
 
 import type { TaskType } from 'types/task';
 import { ICard } from 'types/card';
 
 import { taskTypes } from 'utils/constants';
 
-import { Stack } from '@mui/material';
 import useBoardStyles from './board.styles';
 
 const cardsMocked: ICard[] = [
@@ -39,7 +40,7 @@ const Board: FC = () => {
   return (
     <Stack className={styles.board} direction="row" spacing={2}>
       {taskTypes.map(typeName => (
-        <BoardColumn type={typeName} dropHandler={onDrop} cards={cards.filter(card => card.initialState === typeName)} key={typeName} />
+        <BoardColumn columnName={typeName} dropHandler={onDrop} cards={cards.filter(card => card.initialState === typeName)} key={typeName} />
       ))}
     </Stack>
   );

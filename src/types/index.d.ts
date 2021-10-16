@@ -8,12 +8,12 @@ declare module '@mui/styles' {
 declare module '@mui/material/styles' {
   interface Theme {
     borders: {
-      solid: (number) => string;
+      solid: (size: number, color?: string) => string;
     };
   }
   interface ThemeOptions {
     borders: {
-      solid: (number) => string;
+      solid: (size: number, color?: string) => string;
     };
   }
 }

@@ -1,16 +1,17 @@
 import { FC, DragEvent, useCallback } from 'react';
 
+import { Paper, Stack, Typography } from '@mui/material';
+
 import Card from 'components/Card';
 
 import { ICard } from 'types/card';
 import { TaskType } from 'types/task';
 
-import { Paper, Stack, Typography } from '@mui/material';
 import useBoardColumnStyles from './columnBody.styles';
 
-interface IBody {
+interface IBoardColumn {
   cards: ICard[];
-  type: TaskType;
+  columnName: TaskType;
   dropHandler: (newState: TaskType, cardId: number) => void;
 }
 
@@ -18,7 +19,7 @@ const onDragOver = (e: DragEvent<HTMLDivElement>) => {
   e.preventDefault();
 };
 
-const BoardColumn: FC<IBody> = ({ cards, type, dropHandler }) => {
+const BoardColumn: FC<IBoardColumn> = ({ cards, columnName, dropHandler }) => {
   const styles = useBoardColumnStyles();
 
   const onDrop = useCallback(
@@ -26,14 +27,14 @@ const BoardColumn: FC<IBody> = ({ cards, type, dropHandler }) => {
       e.preventDefault();
 
       const id = parseInt(e.dataTransfer.getData('text/plain'), 10);
-      dropHandler(type, id);
+      dropHandler(columnName, id);
     },
-    [dropHandler, type],
+    [dropHandler, columnName],
   );
 
   return (
     <Paper className={styles.body} onDragOver={onDragOver} onDrop={onDrop}>
-      <Typography>{type}</Typography>
+      <Typography className={styles.columnName}>{columnName}</Typography>
       <Stack>
         {cards.map(card => (
           <Card {...card} key={card.id} />
