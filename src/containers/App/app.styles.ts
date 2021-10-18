@@ -16,6 +16,7 @@ const useAppStyles = makeStyles(() => ({
     },
   },
   app: {
+    display: 'flex',
     backgroundColor: grey,
     height: '100%',
   },
