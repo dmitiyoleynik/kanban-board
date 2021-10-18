@@ -37,7 +37,7 @@ const BoardColumn: FC<IBoardColumn> = ({ cards, columnName, dropHandler }) => {
       <Typography className={styles.columnName}>{columnName}</Typography>
       <Stack>
         {cards.map(card => (
-          <Card {...card} key={card.id} />
+          <Card id={card.id} title={card.title} assignedTo={card.assignedTo} initialState={card.initialState} tags={card.tags} key={card.id} />
         ))}
       </Stack>
     </Paper>

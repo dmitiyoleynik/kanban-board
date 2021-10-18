@@ -4,7 +4,7 @@ const useCardStyles = makeStyles(theme =>
   createStyles({
     card: {
       margin: theme.spacing(2),
-      borderLeft: theme.borders.solid(16, theme.palette.primary.main),
+      borderLeft: theme.borders.solid(2, theme.palette.primary.main),
     },
     assignedTo: {
       alignItems: 'center',
