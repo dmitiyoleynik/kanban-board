@@ -33,6 +33,10 @@
         "prettier"
     ],
     "rules": {
+        "arrow-body-style": [
+            "error",
+            "as-needed"
+        ],
         "no-use-before-define": "off",
         "max-len": ["warn", { "code": 160 }],
         "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
@@ -46,7 +50,7 @@
                 "tsx": "never"
             }
         ],
-        "prettier/prettier": "error",
+        "prettier/prettier": "warn",
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "@typescript-eslint/no-use-before-define": ["error"],
@@ -67,7 +71,7 @@
         "no-unused-vars": "off",
         "camelcase": "off",
         "lines-between-class-members": "off",
-        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-unused-vars": "warn",
         "react/require-default-props": "off",
         "semi": "off",
         "@typescript-eslint/semi": [
