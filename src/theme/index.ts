@@ -1,11 +1,11 @@
 import { createTheme } from '@mui/material/styles';
 
-const defaultSpaceing = 8;
+const defaultSpacing = 8;
 
 const theme = createTheme({
-  spacing: defaultSpaceing,
+  spacing: defaultSpacing,
   borders: {
-    solid: (size: number, color?: string) => `${size * defaultSpaceing}px solid ${color}`,
+    solid: (size: number, color?: string) => `${size * defaultSpacing}px solid ${color}`,
   },
 });
 
