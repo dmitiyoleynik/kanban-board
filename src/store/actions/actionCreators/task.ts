@@ -1,5 +1,5 @@
 import ITaskAction from 'store/actions/task';
-import { setType } from 'store/actionTypes/task';
+import { setType } from 'store/actions/actionTypes/task';
 
 import { TaskType } from 'types/task';
 

@@ -1,5 +1,5 @@
 import { FC, DragEvent, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Paper, Stack, Typography } from '@mui/material';
 
 import Card from 'components/Card';
@@ -7,30 +7,31 @@ import Card from 'components/Card';
 import { TaskType } from 'types/task';
 
 import { selectTaskByType } from 'store/selectors/task';
+import { setTaskTo } from 'store/actions/actionCreators/task';
 
 import useBoardColumnStyles from './columnBody.styles';
 
 interface IBoardColumn {
   columnTasksType: TaskType;
-  dropHandler: (newState: TaskType, cardId: number) => void;
 }
 
 const onDragOver = (e: DragEvent<HTMLDivElement>) => {
   e.preventDefault();
 };
 
-const BoardColumn: FC<IBoardColumn> = ({ columnTasksType, dropHandler }) => {
+const BoardColumn: FC<IBoardColumn> = ({ columnTasksType }) => {
   const styles = useBoardColumnStyles();
   const cards = useSelector(selectTaskByType(columnTasksType));
+  const dispatch = useDispatch();
 
   const onDrop = useCallback(
     (e: DragEvent<HTMLDivElement>) => {
       e.preventDefault();
 
       const id = parseInt(e.dataTransfer.getData('text/plain'), 10);
-      dropHandler(columnTasksType, id);
+      dispatch(setTaskTo(id, columnTasksType));
     },
-    [dropHandler, columnTasksType],
+    [columnTasksType, dispatch],
   );
 
   return (
