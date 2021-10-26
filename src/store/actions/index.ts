@@ -1,2 +1,2 @@
-export type RootActions = unknown;
+export type RootAction = unknown;
 export type RootActionCreators = unknown;
