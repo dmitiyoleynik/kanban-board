@@ -1,12 +1,12 @@
 import { FC, DragEvent, useCallback, useMemo } from 'react';
-
 import MuiCard from '@mui/material/Card';
 import TaskIcon from '@mui/icons-material/Task';
 import { Avatar, CardContent, Stack, Typography } from '@mui/material';
 
 import Tag from 'components/Tag';
 
-import { ICard as ICardProps } from 'types/card';
+import { ITask as ICardProps } from 'types/task';
+
 import { randomColor } from 'services/random';
 
 import useCardStyles from './card.styles';

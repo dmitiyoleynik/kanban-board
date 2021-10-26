@@ -1,2 +1,3 @@
-export type RootAction = unknown;
-export type RootActionCreators = unknown;
+import ITaskAction from './task';
+
+export type RootAction = ITaskAction;

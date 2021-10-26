@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
-
+import { Provider } from 'react-redux';
 import { ThemeProvider } from '@mui/styles';
 
 import Board from 'containers/Board';
 
 import theme from 'theme';
-import { Provider } from 'react-redux';
 
 import store from 'store';
+
 import useAppStyles from './app.styles';
 
 const App: FC = () => {
