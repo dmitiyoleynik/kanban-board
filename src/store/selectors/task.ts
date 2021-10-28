@@ -3,12 +3,13 @@ import { RootState } from 'store';
 
 import { TaskType } from 'types/task';
 
-const selectTasks = (state: RootState) => state.tasks.tasks;
+const selectAllTasks = (state: RootState) => state.tasks.tasks;
 
-const selectTaskByType = createSelector(
-  selectTasks,
-  (_: RootState, type: TaskType) => type,
-  (tasks, type) => tasks.filter(task => task.type === type),
-);
+const selectTasks = (columnTasksType: TaskType) => (state: RootState) =>
+  createSelector(
+    selectAllTasks,
+    (_: RootState, type: TaskType) => type,
+    (tasks, type) => tasks.filter(task => task.type === type),
+  )(state, columnTasksType);
 
-export { selectTaskByType };
+export { selectTasks };

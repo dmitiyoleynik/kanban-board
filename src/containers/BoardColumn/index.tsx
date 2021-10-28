@@ -6,10 +6,9 @@ import Card from 'components/Card';
 
 import { TaskType } from 'types/task';
 
-import { selectTaskByType } from 'store/selectors/task';
-import { setTaskTo } from 'store/actions/actionCreators/task';
+import { selectTasks } from 'store/selectors/task';
+import { changeTaskType } from 'store/actions/actionCreators/task';
 
-import { RootState } from 'store';
 import useBoardColumnStyles from './columnBody.styles';
 
 interface IBoardColumn {
@@ -22,7 +21,7 @@ const onDragOver = (e: DragEvent<HTMLDivElement>) => {
 
 const BoardColumn: FC<IBoardColumn> = ({ columnTasksType }) => {
   const styles = useBoardColumnStyles();
-  const cards = useSelector((state: RootState) => selectTaskByType(state, columnTasksType));
+  const cards = useSelector(selectTasks(columnTasksType));
   const dispatch = useDispatch();
 
   const onDrop = useCallback(
@@ -30,7 +29,7 @@ const BoardColumn: FC<IBoardColumn> = ({ columnTasksType }) => {
       e.preventDefault();
 
       const id = parseInt(e.dataTransfer.getData('text/plain'), 10);
-      dispatch(setTaskTo(id, columnTasksType));
+      dispatch(changeTaskType(id, columnTasksType));
     },
     [columnTasksType, dispatch],
   );

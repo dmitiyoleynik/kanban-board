@@ -3,9 +3,9 @@ import { setType } from 'store/actions/actionTypes/task';
 
 import { TaskType } from 'types/task';
 
-const setTaskTo = (id: number, newType: TaskType): ITaskAction => ({
+const changeTaskType = (id: number, newType: TaskType): ITaskAction => ({
   type: setType,
   payload: { id, newType },
 });
 
-export { setTaskTo };
+export { changeTaskType };
