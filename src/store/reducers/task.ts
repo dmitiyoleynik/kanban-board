@@ -29,8 +29,8 @@ const initialState: ITaskState = {
 export default function tasks(state: ITaskState = initialState, action: ITaskAction): ITaskState {
   switch (action.type) {
     case setType: {
-      const { newType } = action.payload;
-      const newCardList: ITask[] = state.tasks.map(task => (task.id !== action.payload.id ? task : { ...task, type: newType }));
+      const { newType, id } = action.payload;
+      const newCardList: ITask[] = state.tasks.map(task => (task.id !== id ? task : { ...task, type: newType }));
 
       return { ...state, tasks: [...newCardList] };
     }

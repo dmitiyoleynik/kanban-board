@@ -1,10 +1,14 @@
+import { createSelector } from 'reselect';
 import { RootState } from 'store';
 
-import { ITask } from 'types/task';
+import { TaskType } from 'types/task';
 
-const selectTaskByType =
-  (type: string) =>
-  (state: RootState): ITask[] =>
-    state.tasks.tasks.filter(task => task.type === type);
+const selectTasks = (state: RootState) => state.tasks.tasks;
+
+const selectTaskByType = createSelector(
+  selectTasks,
+  (_: RootState, type: TaskType) => type,
+  (tasks, type) => tasks.filter(task => task.type === type),
+);
 
 export { selectTaskByType };
