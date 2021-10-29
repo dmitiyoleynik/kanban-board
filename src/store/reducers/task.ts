@@ -3,11 +3,11 @@ import { setType } from 'store/actionTypes';
 import { ITask } from 'types/task';
 
 interface ITaskState {
-  tasks: ITask[];
+  items: ITask[];
 }
 
 const initialState: ITaskState = {
-  tasks: [
+  items: [
     {
       id: 1,
       title: 'Todo task',
@@ -29,9 +29,9 @@ export default function tasks(state: ITaskState = initialState, action: TaskActi
   switch (action.type) {
     case setType: {
       const { payload } = action;
-      const newCardList: ITask[] = state.tasks.map(task => (task.id !== payload?.id ? task : { ...task, type: payload.newType }));
+      const newCardList: ITask[] = state.items.map(task => (task.id !== payload?.id ? task : { ...task, type: payload.newType }));
 
-      return { ...state, tasks: [...newCardList] };
+      return { ...state, items: newCardList };
     }
     default:
       return state;
