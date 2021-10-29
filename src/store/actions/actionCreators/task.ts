@@ -1,11 +1,16 @@
 import ITaskAction from 'store/actions/task';
-import { setType } from 'store/actions/actionTypes/task';
+import { addTask, setType } from 'store/actions/actionTypes/task';
 
-import { TaskType } from 'types/task';
+import { ITask, TaskType } from 'types/task';
 
 const changeTaskType = (id: number, newType: TaskType): ITaskAction => ({
   type: setType,
   payload: { id, newType },
+});
+
+const addNewTask = (newTask: ITask) => ({
+  type: addTask,
+  payload: {},
 });
 
 export { changeTaskType };

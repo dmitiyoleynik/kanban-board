@@ -5,11 +5,6 @@ import { TaskType } from 'types/task';
 
 const selectAllTasks = (state: RootState) => state.tasks.tasks;
 
-const selectTasks = (columnTasksType: TaskType) => (state: RootState) =>
-  createSelector(
-    selectAllTasks,
-    (_: RootState, type: TaskType) => type,
-    (tasks, type) => tasks.filter(task => task.type === type),
-  )(state, columnTasksType);
+const selectTasks = (columnTasksType: TaskType) => createSelector(selectAllTasks, tasks => tasks.filter(task => task.type === columnTasksType));
 
 export { selectTasks };
