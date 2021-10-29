@@ -8,8 +8,8 @@ import { TaskType } from 'types/task';
 
 import { selectTasks } from 'store/selectors/task';
 
-import useActions from 'store/hooks/useActions';
-import { changeTaskType } from 'store/actions/actionCreators/task';
+import { changeTaskType } from 'store/actions/task';
+import { useActions } from 'store/hooks';
 import useBoardColumnStyles from './columnBody.styles';
 
 interface IBoardColumn {
@@ -24,16 +24,28 @@ const BoardColumn: FC<IBoardColumn> = ({ columnTasksType }) => {
   const styles = useBoardColumnStyles();
   const cards = useSelector(selectTasks(columnTasksType));
   const changeTask = useActions(changeTaskType);
+  const dispatch = useDispatch();
 
-  const onDrop = useCallback(
-    (e: DragEvent<HTMLDivElement>) => {
-      e.preventDefault();
+  // const onDrop = useCallback(
+  //   (e: DragEvent<HTMLDivElement>) => {
+  //     e.preventDefault();
 
-      const id = parseInt(e.dataTransfer.getData('text/plain'), 10);
-      changeTask(id, columnTasksType);
-    },
-    [changeTask, columnTasksType],
-  );
+  //     const id = parseInt(e.dataTransfer.getData('text/plain'), 10);
+  //     console.log({ action: 'changeTask', id, columnTasksType });
+  //     dispatch(changeTaskType(id, columnTasksType));
+  //     // changeTask(id, columnTasksType);
+  //   },
+  //   [changeTask, columnTasksType],
+  // );
+
+  const onDrop = (e: DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+
+    const id = parseInt(e.dataTransfer.getData('text/plain'), 10);
+    console.log({ action: 'changeTask', id, columnTasksType });
+    dispatch(changeTaskType(id, columnTasksType));
+    changeTask(id, columnTasksType);
+  };
 
   return (
     <Paper className={styles.body} onDragOver={onDragOver} onDrop={onDrop}>

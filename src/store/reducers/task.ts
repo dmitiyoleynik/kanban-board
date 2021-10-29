@@ -1,6 +1,5 @@
-import ITaskAction from 'store/actions/task';
-import { setType } from 'store/actions/actionTypes/task';
-
+import { TaskActions } from 'store/actions/task';
+import { setType } from 'store/actionTypes';
 import { ITask } from 'types/task';
 
 interface ITaskState {
@@ -26,11 +25,11 @@ const initialState: ITaskState = {
   ],
 };
 
-export default function tasks(state: ITaskState = initialState, action: ITaskAction): ITaskState {
+export default function tasks(state: ITaskState = initialState, action: TaskActions): ITaskState {
   switch (action.type) {
     case setType: {
-      const { newType, id } = action.payload;
-      const newCardList: ITask[] = state.tasks.map(task => (task.id !== id ? task : { ...task, type: newType }));
+      const { payload } = action;
+      const newCardList: ITask[] = state.tasks.map(task => (task.id !== payload?.id ? task : { ...task, type: payload.newType }));
 
       return { ...state, tasks: [...newCardList] };
     }

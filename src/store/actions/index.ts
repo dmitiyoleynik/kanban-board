@@ -1,3 +1,4 @@
-import ITaskAction from './task';
+import { TaskActionCreators as TaskActionCreator, TaskActions as TaskAction } from 'store/actions/task';
 
-export type RootAction = ITaskAction;
+export type RootAction = TaskAction;
+export type RootActionCreator = TaskActionCreator;
