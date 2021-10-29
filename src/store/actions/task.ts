@@ -8,8 +8,8 @@ interface IChangeTaskArgs {
   newType: TaskType;
 }
 
-export const changeTaskType: AppActionCreator<IChangeTaskArgs> = ({ id, newType }) => {
-  console.log({ id, newType });
+export const changeTaskType: AppActionCreator<IChangeTaskArgs> = (payload: IChangeTaskArgs) => {
+  const { id, newType } = payload;
 
   return { type: setType, payload: { id, newType } };
 };
