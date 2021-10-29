@@ -1,5 +1,4 @@
 import { FC, DragEvent, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { Paper, Stack, Typography } from '@mui/material';
 
 import Card from 'components/Card';
@@ -7,9 +6,9 @@ import Card from 'components/Card';
 import { TaskType } from 'types/task';
 
 import { selectTasks } from 'store/selectors/task';
-
 import { changeTaskType } from 'store/actions/task';
-import { useActions } from 'store/hooks';
+import { useActions, useAppSelector } from 'store/hooks';
+
 import useBoardColumnStyles from './columnBody.styles';
 
 interface IBoardColumn {
@@ -22,7 +21,8 @@ const onDragOver = (e: DragEvent<HTMLDivElement>) => {
 
 const BoardColumn: FC<IBoardColumn> = ({ columnTasksType }) => {
   const styles = useBoardColumnStyles();
-  const cards = useSelector(selectTasks(columnTasksType));
+  const tasksSelector = selectTasks(columnTasksType);
+  const cards = useAppSelector(tasksSelector);
   const changeTask = useActions(changeTaskType);
 
   const onDrop = useCallback(

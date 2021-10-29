@@ -1,2 +1,1 @@
-export const setType = 'SET_TYPE';
-export const addTask = 'ADD_TASK';
+export const SET_TYPE = 'TASKS/SET_TYPE';
