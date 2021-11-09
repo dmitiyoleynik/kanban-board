@@ -2,4 +2,12 @@ import { taskTypes } from 'utils/constants';
 
 type TaskType = typeof taskTypes[number];
 
-export type { TaskType };
+interface ITask {
+  id: number;
+  title: string;
+  assignedTo: string;
+  tags?: string[];
+  type: TaskType;
+}
+
+export type { TaskType, ITask };

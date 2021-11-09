@@ -1,2 +1,4 @@
-export type RootActions = unknown;
-export type RootActionCreators = unknown;
+import { TaskActionCreator, TaskAction } from 'store/actions/task';
+
+export type RootAction = TaskAction;
+export type RootActionCreator = TaskActionCreator;
