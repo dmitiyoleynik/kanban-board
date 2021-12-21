@@ -8,5 +8,7 @@ import { RootAction } from 'store/actions';
 import { fetchTasksFulfilled } from 'store/actions/task';
 import { FETCH_TASKS } from 'store/actionTypes';
 
+import { normalizeTaskFromApiResponse } from 'utils/task';
+
 export const fetchTasksEpic: Epic<RootAction, RootAction, RootState, unknown> = action$ =>
-  action$.pipe(ofType(FETCH_TASKS), switchMap(fetchTasks), map(fetchTasksFulfilled));
+  action$.pipe(ofType(FETCH_TASKS), switchMap(fetchTasks), map(normalizeTaskFromApiResponse), map(fetchTasksFulfilled));
