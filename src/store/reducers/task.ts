@@ -1,5 +1,5 @@
-import { IChangeTaskArgs, TaskAction } from 'store/actions/task';
-import { FETCH_TASKS_FULFILLED, SET_TYPE } from 'store/actionTypes';
+import { TaskAction } from 'store/actions/task';
+import { FETCH_TASKS, fulfilledAction, UPDATE_TASK } from 'store/actionTypes';
 
 import { ITask } from 'types/task';
 
@@ -13,14 +13,13 @@ const initialState: ITaskState = {
 
 export default function tasks(state: ITaskState = initialState, action: TaskAction): ITaskState {
   switch (action.type) {
-    case SET_TYPE: {
+    case UPDATE_TASK: {
       const { payload } = action;
-      const { id, newType } = payload as IChangeTaskArgs;
-      const newCardList: ITask[] = state.items.map(task => (task.id !== id ? task : { ...task, type: newType }));
+      const updatedTask = payload as ITask;
 
-      return { ...state, items: newCardList };
+      return { ...state, items: [...state.items.filter(t => t.id !== updatedTask.id), updatedTask] };
     }
-    case FETCH_TASKS_FULFILLED: {
+    case fulfilledAction(FETCH_TASKS): {
       const { payload } = action;
       const items = payload as ITask[];
 

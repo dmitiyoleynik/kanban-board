@@ -16,7 +16,7 @@ const Board: FC = () => {
   const uploadTasks = useActions(fetchTasks);
   useEffect(() => {
     uploadTasks();
-  });
+  }, []);
 
   return (
     <Stack className={styles.board} direction="row" spacing={2}>

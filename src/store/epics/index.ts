@@ -1,5 +1,5 @@
 import { combineEpics } from 'redux-observable';
 
-import { fetchTasksEpic } from 'store/epics/task';
+import task from './task';
 
-export const rootEpic = combineEpics(fetchTasksEpic);
+export default combineEpics(task);
