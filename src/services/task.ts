@@ -1,12 +1,10 @@
-import { StateObservable } from 'redux-observable';
-
-import { IAppState } from 'store/reducers';
+import { ITaskState } from 'store/reducers/task';
 
 import { TaskType } from 'types/task';
 
-const updateTaskType = (state: StateObservable<IAppState>, payload: { id: number; newType: TaskType }) => ({
-  ...state.value.tasks.items.find(t => t.id === payload.id),
+const moveTask = (tasks: ITaskState, payload: { id: number; newType: TaskType }) => ({
+  ...tasks.items.find(t => t.id === payload.id),
   type: payload.newType,
 });
 
-export { updateTaskType };
+export { moveTask };
