@@ -15,6 +15,7 @@ export function useActions<T extends RootActionCreator | RootActionCreator[]>(ac
       if (Array.isArray(actionCreators)) {
         return actionCreators.map(a => bindActionCreators(a, dispatch));
       }
+
       return bindActionCreators(actionCreators, dispatch);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
