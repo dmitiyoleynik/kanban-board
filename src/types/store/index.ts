@@ -9,4 +9,4 @@ export interface IAppAction<T> extends AnyAction {
 }
 
 export type AppActionCreator<T = void> = ActionCreator<IAppAction<T>>;
-export type AppEpic = Epic<RootAction, RootAction, RootState, unknown>;
+export type AppEpic<TInAction extends RootAction = RootAction, TOutAction extends TInAction = TInAction> = Epic<TInAction, TOutAction, RootState, unknown>;
