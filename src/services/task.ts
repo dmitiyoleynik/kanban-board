@@ -1,10 +1,8 @@
-import { ITaskState } from 'store/reducers/task';
+import { ITask, TaskType } from 'types/task';
 
-import { TaskType } from 'types/task';
-
-const moveTask = (tasks: ITaskState, payload: { id: number; newType: TaskType }) => ({
-  ...tasks.items.find(t => t.id === payload.id),
-  type: payload.newType,
+const updateTaskType = (tasks: ITask[], id: number, newType: TaskType) => ({
+  ...tasks.find(t => t.id === id),
+  type: newType,
 });
 
-export { moveTask };
+export { updateTaskType };

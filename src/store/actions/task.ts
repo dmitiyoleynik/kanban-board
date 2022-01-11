@@ -20,7 +20,7 @@ export const fetchTasksFulfilled: AppActionCreator<ITask[]> = (tasks: ITask[]) =
   payload: tasks,
 });
 
-export type ChangeTaskAction = ReturnType<typeof changeTaskType>;
+export type ChangeTaskAction = Required<ReturnType<typeof changeTaskType>>;
 export type FetchTaskAction = ReturnType<typeof fetchTasks>;
 export type FetchTasksFulfilledAction = ReturnType<typeof fetchTasksFulfilled>;
 export type UpdateTaskAction = ReturnType<typeof updateTask>;
