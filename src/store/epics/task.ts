@@ -1,11 +1,12 @@
 import { combineEpics, ofType } from 'redux-observable';
 import { from, of } from 'rxjs';
-import { catchError, map, mergeMap, tap } from 'rxjs/operators';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 
 import { fetchTasks } from 'services/api/task';
 import { updateTaskType } from 'services/task';
 
 import { RootAction } from 'store/actions';
+import { setError } from 'store/actions/error';
 import { ChangeTaskAction, fetchTasksFulfilled, updateTask } from 'store/actions/task';
 import { FETCH_TASKS, SET_TYPE } from 'store/actionTypes';
 
@@ -17,7 +18,7 @@ const fetchTasksEpic: AppEpic = action$ =>
     mergeMap(() =>
       from(fetchTasks()).pipe(
         map(fetchTasksFulfilled),
-        catchError(err => of(err).pipe(tap(value => console.log({ value })))),
+        catchError(err => of(setError(err))),
       ),
     ),
   );
