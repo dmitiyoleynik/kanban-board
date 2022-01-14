@@ -1,5 +1,6 @@
 import { combineEpics, ofType } from 'redux-observable';
-import { map, switchMap } from 'rxjs/operators';
+import { from, of } from 'rxjs';
+import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 
 import { fetchTasks } from 'services/api/task';
 import { updateTaskType } from 'services/task';
@@ -13,8 +14,12 @@ import { AppEpic } from 'types/store';
 const fetchTasksEpic: AppEpic = action$ =>
   action$.pipe(
     ofType(FETCH_TASKS),
-    switchMap(() => fetchTasks()),
-    map(fetchTasksFulfilled),
+    mergeMap(() =>
+      from(fetchTasks()).pipe(
+        map(fetchTasksFulfilled),
+        catchError(err => of(err).pipe(tap(value => console.log({ value })))),
+      ),
+    ),
   );
 const changeTaskType: AppEpic = (action$, state$) =>
   action$.pipe(
