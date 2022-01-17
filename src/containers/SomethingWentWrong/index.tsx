@@ -1,6 +1,8 @@
-import { Button, Stack, Typography } from '@mui/material';
 import { FC } from 'react';
+
+import { Button, Stack, Typography } from '@mui/material';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
+
 import useSomethingWentWrongStyles from './somethingWentWrong.styles';
 
 const reloadPage = () => {
@@ -12,7 +14,7 @@ const SomethingWentWrong: FC = () => {
 
   return (
     <div className={styles.centeredBlock}>
-      <Stack spacing={2} alignItems="center">
+      <Stack spacing={2} className={styles.foo}>
         <ErrorOutlineOutlinedIcon sx={{ fontSize: 100 }} />
         <Typography variant="h4">Whoops!</Typography>
         <Typography variant="subtitle1">Looks like something went wrong. Try to refresh the page.</Typography>

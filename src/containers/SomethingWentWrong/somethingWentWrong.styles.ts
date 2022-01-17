@@ -1,4 +1,5 @@
 import { makeStyles } from '@mui/styles';
+
 import { white } from 'theme/colors';
 
 const useSomethingWentWrongStyles = makeStyles(theme => ({
@@ -6,6 +7,12 @@ const useSomethingWentWrongStyles = makeStyles(theme => ({
     margin: 'auto',
     backgroundColor: white,
     padding: theme.spacing(2),
+  },
+  foo: {
+    alignItems: 'center',
+  },
+  bar: {
+    fontSize: 100,
   },
 }));
 
