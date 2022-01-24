@@ -1,38 +1,29 @@
 import { TaskAction } from 'store/actions/task';
-import { SET_TYPE } from 'store/actionTypes';
+import { FETCH_TASKS, fulfilledAction, UPDATE_TASK } from 'store/actionTypes';
 
 import { ITask } from 'types/task';
 
-interface ITaskState {
+export type ITaskState = {
   items: ITask[];
-}
+};
 
 const initialState: ITaskState = {
-  items: [
-    {
-      id: 1,
-      title: 'Todo task',
-      type: 'To do',
-      assignedTo: 'Dmytro Oliinyk',
-      tags: ['bug', 'fixit'],
-    },
-    {
-      id: 2,
-      title: 'Done task',
-      type: 'Done',
-      assignedTo: 'Dmytro Oliinyk',
-      tags: ['andry chirt'],
-    },
-  ],
+  items: [],
 };
 
 export default function tasks(state: ITaskState = initialState, action: TaskAction): ITaskState {
   switch (action.type) {
-    case SET_TYPE: {
+    case UPDATE_TASK: {
       const { payload } = action;
-      const newCardList: ITask[] = state.items.map(task => (task.id !== payload?.id ? task : { ...task, type: payload.newType }));
+      const updatedTask = payload as ITask;
 
-      return { ...state, items: newCardList };
+      return { ...state, items: [...state.items.filter(t => t.id !== updatedTask.id), updatedTask] };
+    }
+    case fulfilledAction(FETCH_TASKS): {
+      const { payload } = action;
+      const items = payload as ITask[];
+
+      return { ...state, items };
     }
     default:
       return state;
